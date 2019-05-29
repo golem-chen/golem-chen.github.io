@@ -1,0 +1,27 @@
+### Less默认将calc当做表达式，然后报错：
+
+  Module build failed: Cannot read property 'numerator' of undefined
+
+```css
+.foo {
+  width: calc(100% - 10px);
+}
+```
+
+### 解决方法是用~""包裹起来：
+
+
+```css
+.foo {
+  width: calc(~"100% - 10px");
+}
+```
+
+### 变量可以插值进来：
+
+```css
+@gap: 20px;
+.foo {
+  width: calc(~"100% - @{gap}");
+}
+```
